@@ -35,9 +35,40 @@ namespace cashregister
         {
             try
             {
-                stickAmount = Convert.ToInt32(stickInput.Text);
-                shutterAmount = Convert.ToInt32(shutterInput.Text);
-                drinkAmount = Convert.ToInt32(drinkInput.Text);
+                stickAmount = Convert.ToInt16(stickInput.Text);
+                shutterAmount = Convert.ToInt16(shutterInput.Text);
+                drinkAmount = Convert.ToInt16(drinkInput.Text);
+                
+
+                if (stickAmount < 1)
+                {
+                    if (shutterAmount < 1)
+                    {
+                        if (drinkAmount < 1)
+                        {
+                            receiptLabel.Text = "\nquit wasting my time";
+                            givenInput.Enabled = false;
+                            Refresh();
+                            Thread.Sleep(1250);
+                            receiptLabel.Text = "";
+                            taxLabel.Text = "taxes:";
+                            subtotalLabel.Text = "sub total:";
+                            totalLabel.Text = "total:";
+                        }
+                    }
+                }
+                else
+                {
+                    givenInput.Enabled = true;
+                    subtotal = stickAmount * stickPrice + shutterAmount * shutterPrice + drinkAmount * drinkPrice;
+                    taxAmount = subtotal * taxRate;
+                    total = subtotal + taxAmount;
+
+                    receiptLabel.Text = "";
+                    subtotalLabel.Text = $"sub total: {subtotal.ToString("C")}";
+                    taxLabel.Text = $"taxes: {taxAmount.ToString("C")}";
+                    totalLabel.Text = $"total: {total.ToString("C")}";
+                }
 
                 if (stickAmount == 9)
                 {
@@ -47,12 +78,16 @@ namespace cashregister
                         {
                             this.BackColor = Color.Indigo;
                             nameLabel.Text = "Sorry we're closed";
+                            taxLabel.Text = "taxes:";
+                            subtotalLabel.Text = "sub total:";
+                            totalLabel.Text = "total:";
                         }
                     }
                 }
                 else
                 {
-
+                    nameLabel.Text = "Sasha's Party House";
+                    this.BackColor = Color.DarkOrchid;
                     subtotal = stickAmount * stickPrice + shutterAmount * shutterPrice + drinkAmount * drinkPrice;
                     taxAmount = subtotal * taxRate;
                     total = subtotal + taxAmount;
@@ -88,11 +123,14 @@ namespace cashregister
                 }
                 else
                 {
+                    receiptLabel.Text = "";
                     changeLabel.Text += $"\n{change.ToString("C")}";
                     Refresh();
-                    Thread.Sleep(300);
+                    Thread.Sleep(400);
                     printButton.Visible = true;
                     printButton.Enabled = true;
+                    
+
                 }
             }
             catch
