@@ -83,7 +83,7 @@ namespace cashregister
 
                 if (change < 0)
                 {
-                    receiptLabel.Text = "woah now, that's not enough";
+                    receiptLabel.Text = "woah now, that's not enough.";
 
                 }
                 else
