@@ -74,8 +74,9 @@ namespace cashregister
 
         private void changeButton_Click(object sender, EventArgs e)
         {
-          
 
+            try
+            {
                 given = Convert.ToInt32(givenInput.Text);
 
                 change = given - total;
@@ -93,6 +94,13 @@ namespace cashregister
                     printButton.Visible = true;
                     printButton.Enabled = true;
                 }
+            }
+            catch
+            {
+                printButton.Visible = false;
+                printButton.Enabled = false;
+                receiptLabel.Text = "Sorry, whole bills only.";
+            }
                 
 
         }
@@ -120,6 +128,7 @@ namespace cashregister
             Refresh();
             Thread.Sleep(800);
             receiptLabel.Text += $"\nTotal: {total.ToString("C")}";
+            receiptLabel.Text += $"\nChange: {change.ToString("C")}";
         }
 
         private void doneButton_Click(object sender, EventArgs e)
@@ -133,6 +142,8 @@ namespace cashregister
             shutterInput.Text = "0";
             drinkInput.Text = "0";
             changeLabel.Text = "";
+            nameLabel.Text = "Sasha's Party House";
+            this.BackColor = Color.DarkOrchid;
 
         }
     }

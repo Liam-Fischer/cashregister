@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Storefront));
             this.nameLabel = new System.Windows.Forms.Label();
             this.glowstickLabel = new System.Windows.Forms.Label();
             this.shutGlasLabel = new System.Windows.Forms.Label();
@@ -270,6 +271,7 @@
             this.Controls.Add(this.shutGlasLabel);
             this.Controls.Add(this.glowstickLabel);
             this.Controls.Add(this.nameLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Storefront";
             this.Text = "SPH";
             this.ResumeLayout(false);

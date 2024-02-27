@@ -83,5 +83,17 @@
   <ItemGroup>
     <None Include="Resources\receiptSound.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drinkIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pictogrammers-Material-Cup.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
