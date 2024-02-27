@@ -26,6 +26,7 @@ namespace cashregister
         double total;
         double given;
         double change;
+
         public Storefront()
         {
             InitializeComponent();
@@ -33,6 +34,7 @@ namespace cashregister
 
         private void totalButton_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 stickAmount = Convert.ToInt16(stickInput.Text);
@@ -68,6 +70,7 @@ namespace cashregister
                     subtotalLabel.Text = $"sub total: {subtotal.ToString("C")}";
                     taxLabel.Text = $"taxes: {taxAmount.ToString("C")}";
                     totalLabel.Text = $"total: {total.ToString("C")}";
+                    changeButton.Enabled = true;
                 }
 
                 if (stickAmount == 9)
@@ -95,6 +98,7 @@ namespace cashregister
                     subtotalLabel.Text = $"sub total: {subtotal.ToString("C")}";
                     taxLabel.Text = $"taxes: {taxAmount.ToString("C")}";
                     totalLabel.Text = $"total: {total.ToString("C")}";
+                    changeButton.Enabled = true;
                 }
             }
             catch
@@ -124,7 +128,7 @@ namespace cashregister
                 else
                 {
                     receiptLabel.Text = "";
-                    changeLabel.Text += $"\n{change.ToString("C")}";
+                    changeLabel.Text = $"change: \n{change.ToString("C")}";
                     Refresh();
                     Thread.Sleep(400);
                     printButton.Visible = true;
@@ -167,10 +171,18 @@ namespace cashregister
             Thread.Sleep(800);
             receiptLabel.Text += $"\nTotal: {total.ToString("C")}";
             receiptLabel.Text += $"\nChange: {change.ToString("C")}";
+            doneButton.Enabled = true;
         }
 
         private void doneButton_Click(object sender, EventArgs e)
         {
+            stickAmount = 0;
+            shutterAmount = 0;
+            drinkAmount = 0;
+            given = 0;
+            subtotal = 0;
+            taxAmount = 0;
+            total = 0;
             receiptLabel.Text = "";
             givenInput.Text = "";
             taxLabel.Text = "taxes:";
@@ -182,6 +194,10 @@ namespace cashregister
             changeLabel.Text = "";
             nameLabel.Text = "Sasha's Party House";
             this.BackColor = Color.DarkOrchid;
+            doneButton.Enabled = false;
+            printButton.Enabled = false;
+            changeButton.Enabled = false;
+            givenInput.Enabled = false;
 
         }
     }
