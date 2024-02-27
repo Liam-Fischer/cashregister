@@ -27,6 +27,7 @@ namespace cashregister
         double given;
         double change;
 
+
         public Storefront()
         {
             InitializeComponent();
