@@ -85,6 +85,10 @@ namespace cashregister
                             taxLabel.Text = "taxes:";
                             subtotalLabel.Text = "sub total:";
                             totalLabel.Text = "total:";
+                            changeButton.Enabled = false;
+                            totalButton.Enabled = false;
+                            Refresh();
+                            Thread.Sleep(1500);
                         }
                     }
                 }
